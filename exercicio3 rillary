@@ -1,0 +1,67 @@
+algoritmo "QuickSort"
+
+var
+   vetor : vetor[1..100] de inteiro
+   n, i : inteiro
+
+procedimento troca(var a, b : inteiro)
+var
+   temp : inteiro
+inicio
+   temp <- a
+   a <- b
+   b <- temp
+fimprocedimento
+
+procedimento quicksort(esq, dir : inteiro)
+var
+   i, j, pivo : inteiro
+inicio
+
+   i <- esq
+   j <- dir
+   pivo <- vetor[(esq + dir) div 2]
+
+   enquanto (i <= j) faca
+
+      enquanto (vetor[i] < pivo) faca
+         i <- i + 1
+      fimenquanto
+
+      enquanto (vetor[j] > pivo) faca
+         j <- j - 1
+      fimenquanto
+
+      se (i <= j) entao
+         troca(vetor[i], vetor[j])
+         i <- i + 1
+         j <- j - 1
+      fimse
+
+   fimenquanto
+
+   se (esq < j) entao
+      quicksort(esq, j)
+   fimse
+
+   se (i < dir) entao
+      quicksort(i, dir)
+   fimse
+
+fimprocedimento
+
+inicio
+
+   leia(n)
+
+   para i de 1 ate n faca
+      leia(vetor[i])
+   fimpara
+
+   quicksort(1, n)
+
+   para i de 1 ate n faca
+      escreva(vetor[i], " ")
+   fimpara
+
+fimalgoritmo
