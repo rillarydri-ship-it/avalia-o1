@@ -1,0 +1,30 @@
+algoritmo "TorreDeHanoi"
+
+var
+   n: inteiro
+
+procedimento hanoi(qtd: inteiro; origem, destino, auxiliar: caractere)
+
+inicio
+
+   se (qtd = 1) entao
+      escreval("Mover disco 1 de ", origem, " para ", destino)
+   senao
+      hanoi(qtd - 1, origem, auxiliar, destino)
+
+      escreval("Mover disco ", qtd, " de ", origem, " para ", destino)
+
+      hanoi(qtd - 1, auxiliar, destino, origem)
+   fimse
+
+fimprocedimento
+
+inicio
+
+   escreval("Digite a quantidade de discos:")
+   leia(n)
+
+   escreval("Movimentos da Torre de Hanoi:")
+   hanoi(n, "A", "C", "B")
+
+fimalgoritmo
